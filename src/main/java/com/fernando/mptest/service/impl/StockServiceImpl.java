@@ -27,4 +27,24 @@ public class StockServiceImpl extends ServiceImpl<StockMapper, Stock> implements
     public List<Stock> findAllStock() {
         return stockMapper.findAllStock();
     }
+
+    @Override
+    public List<Stock> findByName(String stock_name) {
+        return stockMapper.findByName(stock_name);
+    }
+
+    @Override
+    public List<Stock> findByCode(String code) {
+        return stockMapper.findByCode(code);
+    }
+
+    @Override
+    public List<Stock> getHotStock() {
+        return stockMapper.getHotStock();
+    }
+
+    @Override
+    public List<Stock> getMostRiseStock() {
+        return stockMapper.getMostRiseStock();
+    }
 }

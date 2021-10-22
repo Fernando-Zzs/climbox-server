@@ -17,4 +17,11 @@ public interface IStockService extends IService<Stock> {
 
     public List<Stock> findAllStock();
 
+    public List<Stock> findByName(String stock_name);
+
+    public List<Stock> findByCode(String code);
+
+    public List<Stock> getHotStock();
+
+    public List<Stock> getMostRiseStock();
 }

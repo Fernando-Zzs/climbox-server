@@ -29,8 +29,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public boolean verifyPassword(String username, String password) {
-        return userMapper.verifyPassword(username,password) > 0;
+    public String verifyPassword(String username, String password) {
+        return userMapper.verifyPassword(username,password);
     }
 
     @Override

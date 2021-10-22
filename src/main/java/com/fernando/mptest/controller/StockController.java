@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -28,5 +30,25 @@ public class StockController {
     @GetMapping("/findAllStock")
     public List<Stock> findAllStock(){
         return stockService.findAllStock();
+    }
+
+    @GetMapping("/findByName")
+    public List<Stock> findAllStock(@RequestParam("name") String stock_name){
+        return stockService.findByName(stock_name);
+    }
+
+    @GetMapping("/findByCode")
+    public List<Stock> findByCode(@RequestParam("code") String code){
+        return stockService.findByCode(code);
+    }
+
+    @GetMapping("/getHotStock")
+    public List<Stock> getHotStock(){
+        return stockService.getHotStock();
+    }
+
+    @GetMapping("/getMostRiseStock")
+    public List<Stock> getMostRiseStock(){
+        return stockService.getMostRiseStock();
     }
 }

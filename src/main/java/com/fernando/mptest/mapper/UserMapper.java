@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,8 +26,8 @@ public interface UserMapper extends BaseMapper<User> {
 
     public List<User> findAllUser();
 
-    @Select("SELECT * FROM USER WHERE username=#{name} and password=#{pwd};")
-    public int verifyPassword(@Param("name") String username, @Param("pwd") String password);
+    @Select("SELECT user_id FROM USER WHERE username=#{name} and password=#{pwd};")
+    public String verifyPassword(@Param("name") String username, @Param("pwd") String password);
 
     public int insert(User user);
 

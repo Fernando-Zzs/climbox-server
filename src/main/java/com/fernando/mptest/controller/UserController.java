@@ -42,11 +42,11 @@ public class UserController {
         JSONObject jsonObject = new JSONObject();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        boolean flag = userService.verifyPassword(username, password);
-        if(flag){
+        String id = userService.verifyPassword(username, password);
+        if(!id.equals("")){
             jsonObject.put(Consts.CODE,1);
             jsonObject.put(Consts.MSG,"登陆成功");
-            session.setAttribute(Consts.NAME, username);
+            session.setAttribute(Consts.ID, id);
             return jsonObject;
         }
         jsonObject.put(Consts.CODE,0);

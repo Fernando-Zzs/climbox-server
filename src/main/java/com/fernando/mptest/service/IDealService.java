@@ -2,6 +2,9 @@ package com.fernando.mptest.service;
 
 import com.fernando.mptest.model.Deal;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-10-20
  */
 public interface IDealService extends IService<Deal> {
+
+    public List<Deal> findDealsByExpertID( String id);
 
 }
