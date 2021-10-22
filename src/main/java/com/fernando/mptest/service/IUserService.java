@@ -1,5 +1,7 @@
 package com.fernando.mptest.service;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.fernando.mptest.model.Expert;
 import com.fernando.mptest.model.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -22,4 +24,6 @@ public interface IUserService extends IService<User> {
     public boolean insert(User user);
 
     public User getUserByName(String username);
+
+    public boolean update(User user);
 }

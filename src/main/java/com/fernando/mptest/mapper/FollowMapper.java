@@ -1,9 +1,16 @@
 package com.fernando.mptest.mapper;
 
+import com.fernando.mptest.model.Expert;
 import com.fernando.mptest.model.Follow;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +24,9 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface FollowMapper extends BaseMapper<Follow> {
 
+    @Select("select distinct expert_name, expert.expert_id from follow ,expert, deal where user_id = #{id} and follow.expert_id = expert.expert_id and follow.expert_id = deal.expert_id order by trade_time desc;")
+    public List<Expert> findFollowByUserId(@Param("id") String id);
+
+    @Delete("delete from follow where user_id = #{user_id} and expert_id = #{expert_id};")
+    public int deleteById(@Param("user_id") String user_id, @Param("expert_id") String expert_id);
 }

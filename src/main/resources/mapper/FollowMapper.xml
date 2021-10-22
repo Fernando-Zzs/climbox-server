@@ -3,9 +3,5 @@
 
 <mapper namespace="com.fernando.mptest.mapper.FollowMapper">
 
-    <!-- 查找关注信息 -->
-    <select id="findAllFollow" resultType="com.fernando.mptest.model.Follow">
-        select * from follow
-    </select>
 
 </mapper>

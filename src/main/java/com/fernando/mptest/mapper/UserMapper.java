@@ -1,5 +1,6 @@
 package com.fernando.mptest.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.fernando.mptest.model.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -30,4 +31,7 @@ public interface UserMapper extends BaseMapper<User> {
     public int insert(User user);
 
     public User getUserByName(String username);
+
+    @Transactional(rollbackFor = Exception.class)
+    public int update(User user);
 }

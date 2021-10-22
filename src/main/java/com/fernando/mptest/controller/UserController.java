@@ -2,6 +2,7 @@ package com.fernando.mptest.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.fernando.mptest.model.User;
 import com.fernando.mptest.service.IUserService;
 import com.fernando.mptest.utils.Consts;
@@ -113,6 +114,64 @@ public class UserController {
         }
         jsonObject.put(Consts.CODE,0);
         jsonObject.put(Consts.MSG,"添加失败");
+        return jsonObject;
+    }
+
+    @RequestMapping (value = "/UserInfo", method = RequestMethod.GET)
+    public User getUserByName(){
+        return userService.getUserByName("fernando");
+    }
+
+    @RequestMapping(value = "/updateUser",method = RequestMethod.GET)
+    public Object update(HttpServletRequest request){
+        JSONObject jsonObject = new JSONObject();
+//        String username = request.getParameter("username").trim();
+//        String password = request.getParameter("password").trim();
+//        String sex = request.getParameter("sex").trim();
+//        String phoneNum = request.getParameter("phoneNum").trim();
+//        String email = request.getParameter("email").trim();
+//        String birth = request.getParameter("birth").trim();
+//        String introduction = request.getParameter("introduction").trim();
+//        String location = request.getParameter("location").trim();
+//        String avatar = request.getParameter("avatar").trim();
+
+        String username = "ppp";
+        String password = "123";
+        String sex = "0";
+        String phoneNum = "72349";
+        String email = "1@e.con";
+        String birth = "2021-10-10";
+        String introduction = "hello";
+        String location = "广州";
+
+        //把生日转换成Date格式
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthDate = new Date();
+        try {
+            birthDate = dateFormat.parse(birth);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setSex(new Integer(sex));
+        user.setPhoneNum(phoneNum);
+        user.setEmail(email);
+        user.setBirth(birthDate);
+        user.setIntroduction(introduction);
+        user.setLocation(location);
+        
+        boolean flag = userService.update(user);
+
+        if(flag){   //修改成功
+            jsonObject.put(Consts.CODE,1);
+            jsonObject.put(Consts.MSG,"修改成功");
+            return jsonObject;
+        }
+        jsonObject.put(Consts.CODE,0);
+        jsonObject.put(Consts.MSG,"修改失败");
         return jsonObject;
     }
 }

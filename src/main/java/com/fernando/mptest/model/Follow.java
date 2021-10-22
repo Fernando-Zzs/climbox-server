@@ -24,5 +24,5 @@ public class Follow extends Model {
 
     private String expertId;
 
-
+    
 }

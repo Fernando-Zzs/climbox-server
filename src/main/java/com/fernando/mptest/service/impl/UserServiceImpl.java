@@ -1,5 +1,6 @@
 package com.fernando.mptest.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.fernando.mptest.model.User;
 import com.fernando.mptest.mapper.UserMapper;
 import com.fernando.mptest.service.IUserService;
@@ -40,5 +41,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public User getUserByName(String username) {
         return userMapper.getUserByName(username);
+    }
+
+    @Override
+    public boolean update(User user) {
+        return userMapper.update(user) > 0;
     }
 }
