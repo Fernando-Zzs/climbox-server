@@ -30,7 +30,7 @@ public interface StockMapper extends BaseMapper<Stock> {
     List<Stock> findByCode(@Param("code")String code);
 
 
-    @Select("select * from stock order by select (sum(amount*price) from deal where stock.code=deal.code) desc")
+    @Select("select * from stock order by (select sum(amount*price) from deal where stock.code=deal.code) desc")
     public List<Stock> getHotStock();
 
     @Select("select * from stock order by price * fluctuation desc")

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -28,7 +29,7 @@ public interface IExpertService extends IService<Expert> {
     public boolean followById(String user_id, String expert_id);
     public boolean unfollowById(String user_id, String expert_id);
 
-    public List<Object> getHoldStocks(String id);
+    public List<Map<String, Object>> getHoldStocks(String id);
 
-    public List<Object> getDeals(String id);
+    public List<Map<String, Object>> getDeals(String id);
 }

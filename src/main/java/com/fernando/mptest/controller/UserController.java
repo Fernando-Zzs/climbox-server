@@ -67,7 +67,7 @@ public class UserController {
         String location = request.getParameter("location").trim();
         String avatar = request.getParameter("avatar").trim();
 
-        if(username==null||username.equals("")){
+        if(username.equals("")){
             jsonObject.put(Consts.CODE,0);
             jsonObject.put(Consts.MSG,"用户名不能为空");
             return jsonObject;
@@ -80,7 +80,7 @@ public class UserController {
             return jsonObject;
         }
 
-        if(password == null || password.equals("")){
+        if(password.equals("")){
             jsonObject.put(Consts.CODE,0);
             jsonObject.put(Consts.MSG,"密码不能为空");
             return jsonObject;
@@ -99,7 +99,7 @@ public class UserController {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setSex(new Integer(sex));
+        user.setSex(Integer.valueOf(sex));
         user.setPhoneNum(phoneNum);
         user.setEmail(email);
         user.setBirth(birthDate);

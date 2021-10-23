@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -78,12 +79,12 @@ public class ExpertServiceImpl extends ServiceImpl<ExpertMapper, Expert> impleme
     }
 
     @Override
-    public List<Object> getHoldStocks(String id) {
+    public List<Map<String, Object>> getHoldStocks(String id) {
         return expertMapper.getHoldStocks(id);
     }
 
     @Override
-    public List<Object> getDeals(String id) {
+    public List<Map<String, Object>> getDeals(String id) {
         return expertMapper.getDeals(id);
     }
 }

@@ -4,13 +4,12 @@ import com.fernando.mptest.model.Expert;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.fernando.mptest.model.Stock;
 import com.fernando.mptest.model.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -51,8 +50,8 @@ public interface ExpertMapper extends BaseMapper<Expert> {
     public int decreaseFollowNumById(@Param("expert_id")String expert_id);
 
     @Select("select * from hold, stock where hold.expert_id=#{expert_id} and hold.code=stock.code order by hold.amount")
-    public List<Object> getHoldStocks(@Param("expert_id")String id);
+    public List<Map<String, Object>> getHoldStocks(@Param("expert_id")String id);
 
     @Select("select * from deal, stock where deal.expert_id=#{expert_id} and deal.code=stock.code order by deal.trade_time")
-    public List<Object> getDeals(@Param("expert_id")String id);
+    public List<Map<String, Object>> getDeals(@Param("expert_id")String id);
 }

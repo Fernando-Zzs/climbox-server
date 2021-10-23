@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -38,8 +39,8 @@ public class ExpertController {
         return expertService.findAllExpert();
     }
 
-    @GetMapping("/selectById")
-    public Expert selectById(@RequestParam("id")String id){
+    @GetMapping("/findById")
+    public Expert findById(@RequestParam("id")String id){
         return expertService.selectById(id);
     }
 
@@ -48,33 +49,33 @@ public class ExpertController {
         return expertService.findByName(expert_name);
     }
 
-    @GetMapping("/getExpertBySuccessRate")
-    public List<Expert> getExpertBySuccessRate(){
+    @GetMapping("/getExpertOnSuccessRate")
+    public List<Expert> getExpertOnSuccessRate(){
         return expertService.getExpertBySuccessRate();
     }
 
-    @GetMapping("/getExpertByFollowerNum")
-    public List<Expert> getExpertByFollowerNum(){
+    @GetMapping("/getExpertOnFollowerNum")
+    public List<Expert> getExpertOnFollowerNum(){
         return expertService.getExpertByFollowerNum();
     }
 
-    @GetMapping("/getExpertByTotalProfitRatio")
+    @GetMapping("/getExpertOnTotalProfitRatio")
     public List<Expert> getExpertByTotalProfitRatio(){
         return expertService.getExpertByTotalProfitRatio();
     }
 
-    @GetMapping("/getExpertByDealAmount")
+    @GetMapping("/getExpertOnDealAmount")
     public List<Expert> getExpertByDealAmount(){
         return expertService.getExpertByDealAmount();
     }
 
     @GetMapping("/getHoldStocks")
-    public List<Object> getHoldStocks(@RequestParam("id")String id){
+    public List<Map<String, Object>> getHoldStocks(@RequestParam("id")String id){
         return expertService.getHoldStocks(id);
     }
 
     @GetMapping("/getDeals")
-    public List<Object> getDeals(@RequestParam("id")String id){
+    public List<Map<String, Object>> getDeals(@RequestParam("id")String id){
         return expertService.getDeals(id);
     }
 
