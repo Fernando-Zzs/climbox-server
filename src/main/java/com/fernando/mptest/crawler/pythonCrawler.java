@@ -11,8 +11,8 @@ import java.io.LineNumberReader;
 @Component
 public class pythonCrawler {
 
-    //十分钟一次 600000
-    @Scheduled(fixedRate = 6000)
+    //十分钟一次 1200000
+    @Scheduled(fixedRate = 1200000)
     public void crawler(){
         try {
             System.out.println("In java : python crawler run");
