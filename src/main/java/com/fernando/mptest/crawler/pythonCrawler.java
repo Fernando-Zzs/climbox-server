@@ -18,7 +18,7 @@ public class pythonCrawler {
             System.out.println("In java : python crawler run");
             //这个方法是类似隐形开启了命令执行器，输入指令执行python脚本
             String command = " python " +
-                    "E:\\Github\\climbox-server1\\src\\main\\resources\\pythonScript\\" +
+                    "/climbox-server/pythonScript/" +
                     "load.py";
 
 
