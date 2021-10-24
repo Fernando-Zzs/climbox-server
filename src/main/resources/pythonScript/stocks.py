@@ -56,7 +56,7 @@ def get_one_tr_data(tr):
 
 
 def save_to_mysql():
-    db = pymysql.connect(host="localhost", user="root", password="root", database="tonghuashun", charset="utf8")
+    db = pymysql.connect(host="127.0.0.1", user="admin", password="Qq156183@", database="climbox", charset="utf8")
     cur = db.cursor()
     cur.execute('delete from deal;')
     cur.execute('delete from stock;')
@@ -91,4 +91,3 @@ if __name__ == '__main__':
     download_all_pages_data()
     save_to_mysql()
     print(all_pages_data)
-    print("crawler running")

@@ -11,14 +11,15 @@ import java.io.LineNumberReader;
 @Component
 public class pythonCrawler {
 
-    //十分钟一次
-    @Scheduled(fixedRate = 600000)
+    //十分钟一次 600000
+    @Scheduled(fixedRate = 6000)
     public void crawler(){
         try {
+            System.out.println("In java : python crawler run");
             //这个方法是类似隐形开启了命令执行器，输入指令执行python脚本
             String command = " python " +
                     "E:\\Github\\climbox-server1\\src\\main\\resources\\pythonScript\\" +
-                    "stocks.py";
+                    "load.py";
 
 
             Process process = Runtime.getRuntime()
