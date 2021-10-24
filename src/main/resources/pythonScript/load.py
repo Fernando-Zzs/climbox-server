@@ -151,7 +151,7 @@ def get_all_data():
 
 
 def save_to_mysql():
-    db = pymysql.connect(host="localhost", user="root", password="root", database="tonghuashun", charset="utf8")
+    db = pymysql.connect(host="localhost", user="dms", password="Qq156183@", database="climbox", charset="utf8")
     cur = db.cursor()
     cur.execute('delete from deal;')
 

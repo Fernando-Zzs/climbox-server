@@ -91,3 +91,4 @@ if __name__ == '__main__':
     download_all_pages_data()
     save_to_mysql()
     print(all_pages_data)
+    print("crawler running")
