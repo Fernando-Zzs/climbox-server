@@ -122,7 +122,7 @@ public class UserController {
         return userService.getUserByName("fernando");
     }
 
-    @RequestMapping(value = "/updateUser",method = RequestMethod.GET)
+    @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
     public Object update(HttpServletRequest request){
         JSONObject jsonObject = new JSONObject();
 //        String username = request.getParameter("username").trim();

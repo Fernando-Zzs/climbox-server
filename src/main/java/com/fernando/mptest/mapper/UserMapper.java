@@ -26,7 +26,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     public List<User> findAllUser();
 
-    @Select("SELECT user_id FROM USER WHERE username=#{name} and password=#{pwd};")
+    @Select("SELECT * FROM USER WHERE username=#{name} and password=#{pwd};")
     public String verifyPassword(@Param("name") String username, @Param("pwd") String password);
 
     public int insert(User user);
