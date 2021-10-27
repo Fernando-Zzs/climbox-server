@@ -19,7 +19,7 @@ public interface IUserService extends IService<User> {
 
     public List<User> findAllUser();
 
-    public String verifyPassword(String username, String password);
+    public boolean verifyPassword(String username, String password);
 
     public boolean insert(User user);
 

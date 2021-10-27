@@ -26,7 +26,8 @@ public interface ExpertMapper extends BaseMapper<Expert> {
 
     public List<Expert> findAllExpert();
 
-    public Expert selectById(String id);
+    @Select("select * from expert where expert_id=#{id}")
+    public Expert selectById(@Param("id") String id);
 
     @Select("select * from expert where expert_name=#{expert_name}")
     public List<Expert> findByName(@Param("expert_name") String expertName);

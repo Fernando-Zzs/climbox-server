@@ -4,8 +4,8 @@
 <mapper namespace="com.fernando.mptest.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.fernando.mptest.model.User">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <id column="user_id" jdbcType="INTEGER" property="id"/>
+        <result column="user_name" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="sex" jdbcType="TINYINT" property="sex"/>
         <result column="phone_num" jdbcType="CHAR" property="phoneNum"/>
@@ -18,12 +18,13 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,username,password,sex,phone_num,email,birth,introduction,location,avatar,create_time
+        user_id,user_name,password,sex,phone_num,email,birth,introduction,location,avatar,create_time
     </sql>
 
     <!-- 查找用户信息 -->
     <select id="findAllUser" resultType="com.fernando.mptest.model.User">
-        select * from user
+        select <include refid="Base_Column_List"/>
+        from user
     </select>
 
     <!--根据名字获取用户-->
@@ -31,7 +32,7 @@
         select
         <include refid="Base_Column_List"/>
         from user
-        where username = #{username}
+        where user_name = #{username}
     </select>
 
     <!--更新用户信息-->
@@ -60,6 +61,6 @@
                 location = #{location},
             </if>
         </set>
-        where username = #{username}
+        where user_name = #{username}
     </update>
 </mapper>

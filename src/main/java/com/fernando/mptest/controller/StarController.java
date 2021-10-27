@@ -3,10 +3,16 @@ package com.fernando.mptest.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fernando.mptest.model.Expert;
-import com.fernando.mptest.service.IFollowService;
+import com.fernando.mptest.model.Star;
+import com.fernando.mptest.model.Stock;
+import com.fernando.mptest.service.IStarService;
 import com.fernando.mptest.utils.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -16,25 +22,24 @@ import java.util.List;
  * </p>
  *
  * @author fernando
- * @since 2021-10-20
+ * @since 2021-10-27
  */
 @RestController
-@RequestMapping("/follow")
-public class FollowController {
-
+@RequestMapping("/star")
+public class StarController {
     @Autowired
-    private IFollowService followService;
+    private IStarService starService;
 
-    @GetMapping("/findFollowByUserId")
-    public List<Expert> findFollowByUserId(@RequestParam("id") String user_id){
-        return followService.findFollowByUserId(user_id);
+    @GetMapping("/findStarByUserId")
+    public List<Stock> findStarByUserId(@RequestParam("user_id") String user_id){
+        return starService.findStarByUserId(user_id);
     }
 
     @GetMapping("/deleteById")
-    public Object deleteById(@RequestParam("user_id") String user_id, @RequestParam("expert_id") String expert_id){
+    public Object deleteById(@RequestParam("user_id") String user_id, @RequestParam("stock_code") String stock_code){
         JSONObject jsonObject = new JSONObject();
 
-        boolean flag = followService.deleteById(user_id, expert_id);
+        boolean flag = starService.deleteById(user_id, stock_code);
 
         if(flag){   //修改成功
             jsonObject.put(Consts.CODE,1);
@@ -46,11 +51,11 @@ public class FollowController {
         return jsonObject;
     }
 
-    @GetMapping("/followById")
-    public Object followById(@RequestParam("user_id") String user_id, @RequestParam("expert_id") String expert_id){
+    @GetMapping("/starById")
+    public Object starById(@RequestParam("user_id") String user_id, @RequestParam("stock_code") String stock_code){
         JSONObject jsonObject = new JSONObject();
 
-        boolean flag = followService.followById(user_id, expert_id);
+        boolean flag = starService.starById(user_id, stock_code);
 
         if(flag){   //修改成功
             jsonObject.put(Consts.CODE,1);

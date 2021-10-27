@@ -34,4 +34,9 @@ public class FollowServiceImpl extends ServiceImpl<FollowMapper, Follow> impleme
     public boolean deleteById(String user_id, String expert_id) {
         return followMapper.deleteById(user_id, expert_id) > 0;
     }
+
+    @Override
+    public boolean followById(String user_id, String expert_id) {
+        return followMapper.followById(user_id, expert_id) > 0;
+    }
 }

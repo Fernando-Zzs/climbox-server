@@ -19,4 +19,6 @@ public interface IFollowService extends IService<Follow> {
     public List<Expert> findFollowByUserId(String id);
 
     public boolean deleteById(String user_id, String expert_id);
+
+    public boolean followById(String user_id, String expert_id);
 }

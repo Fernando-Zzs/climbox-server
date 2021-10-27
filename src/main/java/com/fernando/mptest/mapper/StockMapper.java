@@ -23,10 +23,10 @@ public interface StockMapper extends BaseMapper<Stock> {
 
     public List<Stock> findAllStock();
 
-    @Select("select * from stock where stock_name=#{stock_name}")
+    @Select("select * from stock where stock_name like CONCAT('%',#{stock_name},'%')")
     public List<Stock> findByName(@Param("stock_name")String stock_name);
 
-    @Select("select * from stock where code=#{code}")
+    @Select("select * from stock where code like CONCAT('%',#{code},'%')")
     List<Stock> findByCode(@Param("code")String code);
 
 
