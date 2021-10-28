@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.fernando.mptest.model.User;
 import com.fernando.mptest.service.IUserService;
 import com.fernando.mptest.utils.Consts;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,7 @@ public class UserController {
         return userService.findAllUser();
     }
 
-    @RequestMapping(value = "/login/status", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Object loginStatus(HttpServletRequest request, HttpSession session){
         JSONObject jsonObject = new JSONObject();
         String username = request.getParameter("username");
@@ -58,12 +59,8 @@ public class UserController {
         JSONObject jsonObject = new JSONObject();
         String username = request.getParameter("username").trim();
         String password = request.getParameter("password").trim();
-        String sex = request.getParameter("sex").trim();
         String phoneNum = request.getParameter("phoneNum").trim();
         String email = request.getParameter("email").trim();
-        String birth = request.getParameter("birth").trim();
-        String introduction = request.getParameter("introduction").trim();
-        String location = request.getParameter("location").trim();
         String avatar = request.getParameter("avatar").trim();
 
         if(username.equals("")){
@@ -85,25 +82,12 @@ public class UserController {
             return jsonObject;
         }
 
-        //把生日转换成Date格式
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date birthDate = new Date();
-        try {
-            birthDate = dateFormat.parse(birth);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         //保存到前端用户的对象中
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setSex(Integer.valueOf(sex));
         user.setPhoneNum(phoneNum);
         user.setEmail(email);
-        user.setBirth(birthDate);
-        user.setIntroduction(introduction);
-        user.setLocation(location);
         user.setAvatar(avatar);
         boolean flag = userService.insert(user);
         if(flag){   //保存成功
@@ -116,52 +100,25 @@ public class UserController {
         return jsonObject;
     }
 
-    @RequestMapping (value = "/userInfo", method = RequestMethod.GET)
-    public User getUserByName(){
-        return userService.getUserByName("fernando");
+    @RequestMapping (value = "/UserInfo", method = RequestMethod.GET)
+    public User getUserByName(@Param("username")String username){
+        return userService.getUserByName(username);
     }
 
     @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
     public Object update(HttpServletRequest request){
         JSONObject jsonObject = new JSONObject();
-//        String username = request.getParameter("username").trim();
-//        String password = request.getParameter("password").trim();
-//        String sex = request.getParameter("sex").trim();
-//        String phoneNum = request.getParameter("phoneNum").trim();
-//        String email = request.getParameter("email").trim();
-//        String birth = request.getParameter("birth").trim();
-//        String introduction = request.getParameter("introduction").trim();
-//        String location = request.getParameter("location").trim();
-//        String avatar = request.getParameter("avatar").trim();
-
-        String username = "ppp";
-        String password = "123";
-        String sex = "0";
-        String phoneNum = "72349";
-        String email = "1@e.con";
-        String birth = "2021-10-10";
-        String introduction = "hello";
-        String location = "广州";
-
-        //把生日转换成Date格式
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date birthDate = new Date();
-        try {
-            birthDate = dateFormat.parse(birth);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String username = request.getParameter("username").trim();
+        String password = request.getParameter("password").trim();
+        String phoneNum = request.getParameter("phoneNum").trim();
+        String email = request.getParameter("email").trim();
+        String avatar = request.getParameter("avatar").trim();
 
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setSex(new Integer(sex));
         user.setPhoneNum(phoneNum);
         user.setEmail(email);
-        user.setBirth(birthDate);
-        user.setIntroduction(introduction);
-        user.setLocation(location);
-        
         boolean flag = userService.update(user);
 
         if(flag){   //修改成功

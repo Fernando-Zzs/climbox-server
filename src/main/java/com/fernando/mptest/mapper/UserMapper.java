@@ -26,7 +26,7 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("SELECT count(*) FROM user WHERE user_name=#{name} and password=#{pwd};")
     public int verifyPassword(@Param("name") String username, @Param("pwd") String password);
 
-    @Insert("insert into user ( user_name, password, sex, phone_num, email, birth, introduction, location, avatar, create_time) values (#{user.username},#{user.password},#{user.sex},#{user.phoneNum},#{user.email},#{user.birth},#{user.introduction},#{user.location},#{user.avatar},#{user.createTime});")
+    @Insert("insert into user ( user_name, password, phone_num, email, avatar, create_time) values (#{user.username},#{user.password},#{user.phoneNum},#{user.email},#{user.avatar},#{user.createTime});")
     public int insert(@Param("user") User user);
 
     public User getUserByName(String username);

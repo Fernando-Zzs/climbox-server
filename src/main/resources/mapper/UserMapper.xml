@@ -7,22 +7,18 @@
         <id column="user_id" jdbcType="INTEGER" property="id"/>
         <result column="user_name" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="sex" jdbcType="TINYINT" property="sex"/>
         <result column="phone_num" jdbcType="CHAR" property="phoneNum"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="birth" jdbcType="DATE" property="birth"/>
-        <result column="introduction" jdbcType="VARCHAR" property="introduction"/>
-        <result column="location" jdbcType="VARCHAR" property="location"/>
         <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        user_id,user_name,password,sex,phone_num,email,birth,introduction,location,avatar,create_time
+        user_id,user_name,password,phone_num,email,avatar,create_time
     </sql>
 
     <!-- 查找用户信息 -->
-    <select id="findAllUser" resultType="com.fernando.mptest.model.User">
+    <select id="findAllUser" resultMap="BaseResultMap" resultType="com.fernando.mptest.model.User">
         select <include refid="Base_Column_List"/>
         from user
     </select>
@@ -42,23 +38,11 @@
             <if test="password != null">
                 password = #{password},
             </if>
-            <if test="sex != null">
-                sex = #{sex},
-            </if>
             <if test="phoneNum != null">
                 phone_num = #{phoneNum},
             </if>
             <if test="email != null">
                 email = #{email},
-            </if>
-            <if test="birth != null">
-                birth = #{birth},
-            </if>
-            <if test="introduction != null">
-                introduction = #{introduction},
-            </if>
-            <if test="location != null">
-                location = #{location},
             </if>
         </set>
         where user_name = #{username}

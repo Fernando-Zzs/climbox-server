@@ -33,17 +33,9 @@ public class User extends Model {
 
     private String password;
 
-    private Integer sex;
-
     private String phoneNum;
 
     private String email;
-
-    private Date birth;
-
-    private String introduction;
-
-    private String location;
 
     private String avatar;
 
