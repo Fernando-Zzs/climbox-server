@@ -18,13 +18,13 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //注册TestInterceptor拦截器
-        InterceptorRegistration registration = registry.addInterceptor(new UserLoginInterceptor());
-        registration.addPathPatterns("/**"); //所有路径都被拦截
-        registration.excludePathPatterns(    //添加不拦截路径
-                "/login",                    //登录路径
-                "/**/*.html",                //html静态资源
-                "/**/*.js",                  //js静态资源
-                "/**/*.css"                  //css静态资源
-        );
+//        InterceptorRegistration registration = registry.addInterceptor(new UserLoginInterceptor());
+//        registration.addPathPatterns("/**"); //所有路径都被拦截
+//        registration.excludePathPatterns(    //添加不拦截路径
+//                "/login",                    //登录路径
+//                "/**/*.html",                //html静态资源
+//                "/**/*.js",                  //js静态资源
+//                "/**/*.css"                  //css静态资源
+//        );
     }
 }
