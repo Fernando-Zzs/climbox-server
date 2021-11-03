@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -26,7 +27,7 @@ public class FollowServiceImpl extends ServiceImpl<FollowMapper, Follow> impleme
     private FollowMapper followMapper;
 
     @Override
-    public List<Expert> findFollowByUserId(String id) {
+    public List<Map<String, Object>> findFollowByUserId(String id) {
         return followMapper.findFollowByUserId(id);
     }
 

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -29,8 +30,8 @@ import java.util.List;
 public interface FollowMapper extends BaseMapper<Follow> {
 
 
-    @Select("select distinct expert_name, expert.expert_id from follow ,expert, deal where user_id = #{id} and follow.expert_id = expert.expert_id and follow.expert_id = deal.expert_id order by trade_time desc;")
-    public List<Expert> findFollowByUserId(@Param("id") String id);
+    @Select("select distinct expert.*, trade_time from follow ,expert, deal where user_id = #{id} and follow.expert_id = expert.expert_id and follow.expert_id = deal.expert_id order by trade_time desc;")
+    public List<Map<String, Object>> findFollowByUserId(@Param("id") String id);
 
     @Delete("delete from follow where user_id = #{user_id} and expert_id = #{expert_id};")
     public int deleteById(@Param("user_id") String user_id, @Param("expert_id") String expert_id);

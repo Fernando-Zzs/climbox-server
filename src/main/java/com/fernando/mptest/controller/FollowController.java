@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -26,7 +27,7 @@ public class FollowController {
     private IFollowService followService;
 
     @GetMapping("/findFollowByUserId")
-    public List<Expert> findFollowByUserId(@RequestParam("id") String user_id){
+    public List<Map<String, Object>> findFollowByUserId(@RequestParam("id") String user_id){
         return followService.findFollowByUserId(user_id);
     }
 

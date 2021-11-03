@@ -45,6 +45,10 @@ public class UserController {
         String password = request.getParameter("password");
         boolean flag = userService.verifyPassword(username, password);
         if(flag){
+            session.setAttribute(Consts.NAME, username);
+            String id = userService.getUserByName(username).getId().toString();
+            session.setAttribute(Consts.ID, id);
+
             jsonObject.put(Consts.CODE,1);
             jsonObject.put(Consts.MSG,"登陆成功");
             return jsonObject;
