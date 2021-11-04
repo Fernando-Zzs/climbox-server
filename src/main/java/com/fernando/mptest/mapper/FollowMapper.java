@@ -30,7 +30,7 @@ import java.util.Map;
 public interface FollowMapper extends BaseMapper<Follow> {
 
 
-    @Select("select distinct expert.*, trade_time from follow ,expert, deal where user_id = #{id} and follow.expert_id = expert.expert_id and follow.expert_id = deal.expert_id order by trade_time desc;")
+    @Select("select distinct expert.* from follow ,expert where user_id = #{id} and follow.expert_id = expert.expert_id;")
     public List<Map<String, Object>> findFollowByUserId(@Param("id") String id);
 
     @Delete("delete from follow where user_id = #{user_id} and expert_id = #{expert_id};")

@@ -54,6 +54,7 @@ public class FollowController {
         boolean flag = followService.followById(user_id, expert_id);
 
         if(flag){   //修改成功
+
             jsonObject.put(Consts.CODE,1);
             jsonObject.put(Consts.MSG,"关注成功");
             return jsonObject;
