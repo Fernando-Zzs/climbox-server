@@ -21,4 +21,6 @@ public interface IStarService extends IService<Star> {
     public boolean deleteById(String user_id, String stock_code);
 
     public boolean starById(String user_id, String stock_code);
+
+    public boolean checkState(String user_id, String stock_code);
 }

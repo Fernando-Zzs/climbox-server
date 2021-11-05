@@ -27,6 +27,8 @@ public interface StarMapper extends BaseMapper<Star> {
     public int deleteById(@Param("user_id") String user_id, @Param("stock_code") String stock_code);
 
     @Insert("insert into star values(#{user_id},#{stock_code})")
-    public int followById(@Param("user_id") String user_id,@Param("stock_code") String stock_code);
+    public int followById(@Param("user_id") String user_id, @Param("stock_code") String stock_code);
 
+    @Select("select count(*) from star where user_id = #{user_id} and stock_code = #{stock_code};")
+    public int checkState(@Param("user_id") String user_id, @Param("stock_code") String stock_code);
 }

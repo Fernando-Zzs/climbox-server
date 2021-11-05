@@ -66,4 +66,20 @@ public class StarController {
         jsonObject.put(Consts.MSG,"关注失败");
         return jsonObject;
     }
+
+    @GetMapping("/checkState")
+    public Object checkState(@RequestParam("user_id") String user_id, @RequestParam("stock_code") String stock_code){
+        JSONObject jsonObject = new JSONObject();
+
+        boolean flag = starService.checkState(user_id, stock_code);
+
+        if(flag){
+            jsonObject.put(Consts.CODE,1);
+            jsonObject.put(Consts.MSG,"已收藏");
+            return jsonObject;
+        }
+        jsonObject.put(Consts.CODE,0);
+        jsonObject.put(Consts.MSG,"未收藏");
+        return jsonObject;
+    }
 }

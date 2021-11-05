@@ -38,4 +38,9 @@ public class StarServiceImpl extends ServiceImpl<StarMapper, Star> implements IS
     public boolean starById(String user_id, String stock_code) {
         return starMapper.followById(user_id, stock_code)>0;
     }
+
+    @Override
+    public boolean checkState(String user_id, String stock_code) {
+        return starMapper.checkState(user_id, stock_code) > 0;
+    }
 }
