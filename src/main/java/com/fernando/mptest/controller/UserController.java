@@ -113,10 +113,18 @@ public class UserController {
     public Object update(HttpServletRequest request){
         JSONObject jsonObject = new JSONObject();
         String username = request.getParameter("username").trim();
-        String password = request.getParameter("password").trim();
-        String phoneNum = request.getParameter("phoneNum").trim();
-        String email = request.getParameter("email").trim();
-        String avatar = request.getParameter("avatar").trim();
+        String password = null;
+        if(request.getParameter("password") != null){
+            password = request.getParameter("password").trim();
+        }
+        String phoneNum = null;
+        if(request.getParameter("phoneNum") != null){
+            phoneNum = request.getParameter("phoneNum").trim();
+        }
+        String email = null;
+        if(request.getParameter("email") != null){
+            email = request.getParameter("email");
+        }
 
         User user = new User();
         user.setUsername(username);

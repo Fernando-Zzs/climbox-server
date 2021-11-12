@@ -4,6 +4,7 @@ import com.fernando.mptest.model.Stock;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -21,7 +22,7 @@ public interface IStockService extends IService<Stock> {
 
     public List<Stock> findByCode(String code);
 
-    public List<Stock> getHotStock();
+    public List<Map<String, Object>> getHotStock();
 
     public List<Stock> getMostRiseStock();
 }

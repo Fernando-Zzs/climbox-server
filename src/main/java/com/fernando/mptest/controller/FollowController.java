@@ -63,4 +63,20 @@ public class FollowController {
         jsonObject.put(Consts.MSG,"关注失败");
         return jsonObject;
     }
+
+    @GetMapping("/checkState")
+    public Object checkState(@RequestParam("user_id") String user_id, @RequestParam("expert_id") String expert_id){
+        JSONObject jsonObject = new JSONObject();
+
+        boolean flag = followService.checkState(user_id, expert_id);
+
+        if(flag){
+            jsonObject.put(Consts.CODE,1);
+            jsonObject.put(Consts.MSG,"已收藏");
+            return jsonObject;
+        }
+        jsonObject.put(Consts.CODE,0);
+        jsonObject.put(Consts.MSG,"未收藏");
+        return jsonObject;
+    }
 }

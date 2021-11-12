@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -39,7 +40,7 @@ public class StockServiceImpl extends ServiceImpl<StockMapper, Stock> implements
     }
 
     @Override
-    public List<Stock> getHotStock() {
+    public List<Map<String, Object>> getHotStock() {
         return stockMapper.getHotStock();
     }
 

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -30,8 +31,12 @@ public interface StockMapper extends BaseMapper<Stock> {
     List<Stock> findByCode(@Param("code")String code);
 
 
-    @Select("select * from stock order by (select sum(amount*price) from deal where stock.code=deal.code) desc")
-    public List<Stock> getHotStock();
+    @Select("select stock.*, sum(amount * T.price) as keyValue\n" +
+            "from (select * from deal where method = '买入'\n" +
+            "      order by trade_time desc limit 800) as T, stock\n" +
+            "where T.code = stock.code group by code\n" +
+            "order by keyValue desc limit 10;")
+    public List<Map<String, Object>> getHotStock();
 
     @Select("select * from stock order by price * fluctuation desc")
     public List<Stock> getMostRiseStock();

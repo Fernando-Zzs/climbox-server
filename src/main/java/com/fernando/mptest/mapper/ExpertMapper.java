@@ -41,8 +41,12 @@ public interface ExpertMapper extends BaseMapper<Expert> {
     @Select("select * from expert order by follower_num")
     public List<Expert> getExpertByFollowerNum();
 
-    @Select("select * from expert order by (select sum(amount * price) from deal where deal.expert_id=expert.expert_id) desc")
-    public List<Expert> getExpertByDealAmount();
+    @Select("select expert.*, sum(amount * price) as keyValue\n" +
+            "from expert, deal\n" +
+            "where expert.expert_id = deal.expert_id\n" +
+            "group by expert.expert_id\n" +
+            "order by keyValue desc limit 81;")
+    public List<Map<String, Object>> getExpertByDealAmount();
 
     @Update("update expert set follower_num = follower_num + 1 where expert_id=#{expert_id}")
     public int updateFollowNumById(@Param("expert_id")String expert_id);

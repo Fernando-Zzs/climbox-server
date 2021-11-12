@@ -65,7 +65,7 @@ public class ExpertController {
     }
 
     @GetMapping("/getExpertOnDealAmount")
-    public List<Expert> getExpertByDealAmount(){
+    public List<Map<String, Object>> getExpertByDealAmount(){
         return expertService.getExpertByDealAmount();
     }
 

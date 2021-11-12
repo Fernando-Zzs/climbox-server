@@ -62,7 +62,7 @@ public class ExpertServiceImpl extends ServiceImpl<ExpertMapper, Expert> impleme
     }
 
     @Override
-    public List<Expert> getExpertByDealAmount() {
+    public List<Map<String, Object>> getExpertByDealAmount() {
         return expertMapper.getExpertByDealAmount();
     }
 

@@ -41,4 +41,7 @@ public interface FollowMapper extends BaseMapper<Follow> {
 
     @Delete("delete from follow where user_id = #{user_id} and expert_id = #{expert_id};")
     public int unfollowById(@Param("user_id") String user_id, @Param("expert_id") String expert_id);
+
+    @Select("select count(*) from follow where user_id = #{user_id} and expert_id = #{expert_id};")
+    public int checkState(@Param("user_id") String user_id, @Param("expert_id") String expert_id);
 }

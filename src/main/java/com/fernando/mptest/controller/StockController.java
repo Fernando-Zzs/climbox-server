@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -43,7 +44,7 @@ public class StockController {
     }
 
     @GetMapping("/getHotStock")
-    public List<Stock> getHotStock(){
+    public List<Map<String, Object>> getHotStock(){
         return stockService.getHotStock();
     }
 

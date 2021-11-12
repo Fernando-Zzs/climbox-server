@@ -24,7 +24,7 @@ public interface IExpertService extends IService<Expert> {
     public List<Expert> getExpertBySuccessRate();
     public List<Expert> getExpertByTotalProfitRatio();
     public List<Expert> getExpertByFollowerNum();
-    public List<Expert> getExpertByDealAmount();
+    public List<Map<String, Object>> getExpertByDealAmount();
 
     public boolean followById(String user_id, String expert_id);
     public boolean unfollowById(String user_id, String expert_id);
